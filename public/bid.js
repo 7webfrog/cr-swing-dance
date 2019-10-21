@@ -42,16 +42,21 @@ async function loadCBid() {
 }
 
 async function bid() {
-  message("");
   var name = document.getElementById("name").value;
   var bid = document.getElementById("bid").value;
   await loadCBid();
   if (name == "") {
-    message("Please enter your name");
+    alert("Please enter your name");
     return;
   }
   if (bid == "") {
-    message("Please enter a bid");
+    alert("Please enter a valid bid");
+    return;
+  }
+  try {
+    bid = parseFloat(bid);
+  } catch (err) {
+    alert("Please enter a valid bid");
     return;
   }
   if (bid >= cbid + k) {
@@ -62,12 +67,8 @@ async function bid() {
     db.ref(item).child('num').set(parseInt(bidder));
     db.ref(item).child('name'+bidder).set(name);
     db.ref(item).child('bid'+bidder).set(parseFloat(bid));
-    message("Your bid has been submitted. Refresh the page to see it updated.")
+    alert("Your bid has been submitted. Refresh the page to see it updated.")
   } else {
-    message("Please enter a bid higher than the current one!<br>NOTE: You may need to refresh the page to see the current bid.");
+    alert("Please enter a bid higher than the current one!\nNOTE: You may need to refresh the page to see the current bid.");
   }
-}
-
-function message(reason) {
-  alert(reason);
 }
