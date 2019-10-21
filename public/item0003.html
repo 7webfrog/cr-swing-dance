@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <link rel="icon" type="image/png" href="icon.png"> -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cedar Ridge Swing Dance Silent Auction</title>
+    <link rel="stylesheet" type="text/css" href="auc-page.css">
+  </head>
+  <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.2.1/firebase-app.js"></script>
+    
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.2.1/firebase-auth.js"></script>
+    <script src="/__/firebase/7.2.1/firebase-database.js"></script>
+    <script src="bid.js"></script>
+    
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+    <p>Item no. <span id="tag">0003</span></p>
+    <p>Current Bid: $<span id="cbid"></span></p>
+    <input type="text" name="name" id="name" />
+    <input type="number" name="bid" id="bid" />
+    <button id="submit" onclick="bid()">Submit</button>
+    <p style="display: none;" id="message"></p>
+    <br>
+    <a href="index.html"><button>Back</button></a>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "rules": {
+    ".read": "auth.provider == 'anonymous'",
+    ".write": "auth.provider == 'anonymous'"
+  }
+}
