@@ -69,7 +69,5 @@ async function bid() {
 }
 
 function message(reason) {
-  var mes = document.getElementById("message");
-  mes.style.display = "inline";
-  mes.innerHTML = reason;
+  alert(reason);
 }
