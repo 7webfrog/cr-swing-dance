@@ -43,10 +43,15 @@ async function loadCBid() {
 
 async function bid() {
   var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
   var bid = document.getElementById("bid").value;
   await loadCBid();
   if (name == "") {
-    alert("Please enter your name");
+    alert("Please enter your name. This is how we will identify the winner.");
+    return;
+  }
+  if (email == "") {
+    alert("Please enter your email. This is our primary way to contact you if you win.");
     return;
   }
   if (bid == "") {
@@ -60,14 +65,16 @@ async function bid() {
     return;
   }
   if (bid >= cbid + k) {
-    if (!confirm("Please confirm that $"+bid+" is the amount that you wish to bid.")) { // TODO check if this works
+    if (!confirm("Please confirm that $"+bid+" is the amount that you wish to bid.")) {
       return;
     }
     bidder++;
     db.ref(item).child('num').set(parseInt(bidder));
     db.ref(item).child('name'+bidder).set(name);
+    db.ref(item).child('email'+bidder).set(email);
     db.ref(item).child('bid'+bidder).set(parseFloat(bid));
-    alert("Your bid has been submitted. Refresh the page to see it updated.")
+    alert("Your bid has been submitted.")
+    window.location.reload(true);
   } else {
     alert("Please enter a bid higher than the current one!\nNOTE: You may need to refresh the page to see the current bid.");
   }
